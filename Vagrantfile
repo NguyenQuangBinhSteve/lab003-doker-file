@@ -9,9 +9,14 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 80, host: 8000
   config.vm.network "forwarded_port", guest: 3000, host: 3000
   config.vm.network "forwarded_port", guest: 5000, host: 5000
+  
+  # config.vm.synced_folder "./src", "/var/www/project",
+  # owner: "vagrant",
+  # group: "vagrant",
+  # mount_options: ["dmode=775", "fmode=664"]
 
-  config.vm.synced_folder "./src", "/var/www/project" # , owner: "vagrant", group: "vagrant", type: "virtualbox"
-  # config.vm.synced_folder "./src", "/var/www/project", owner: "vagrant", group: "vagrant", type: "rsync"
+  # config.vm.synced_folder "./src", "/var/www/project" # , owner: "vagrant", group: "vagrant", type: "virtualbox"
+  config.vm.synced_folder "./src", "/var/www/project", owner: "vagrant", group: "vagrant", type: "rsync"
   # Tăng thời gian timeout (mặc định 300 giây).
   # Thêm option để tránh lỗi boot chậm trên máy yếu hoặc mạng chậm.
   config.vm.boot_timeout = 900

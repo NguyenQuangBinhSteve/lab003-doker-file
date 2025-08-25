@@ -12,7 +12,7 @@ RUN npm install
 
 # Copy code (nếu build production thì giữ, dev thì có thể bỏ để bind mount)
 # COPY client/ ./
-COPY . ./   # vì context chính là /var/www/project/client
+COPY client/. ./   # vì context chính là /var/www/project/client
 
 # React dev server listen mọi IP
 ENV HOST=0.0.0.0
