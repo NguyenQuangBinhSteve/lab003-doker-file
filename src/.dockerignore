@@ -1,0 +1,15 @@
+# Thu mục phụ thuộc của Node
+node_modules
+# client/node_modules
+# client/build
+
+# File log va debug
+npm-debug.log
+
+# Metadata của Git và Vagrant
+.git
+.vagrant
+
+# Các file của mình Docker
+Dockerfile*
+docker-compose.yml
