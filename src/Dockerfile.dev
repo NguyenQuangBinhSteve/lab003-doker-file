@@ -1,24 +1,21 @@
-# Giải đống 1: Lấy image cơ sở Node.js từ node:18-alpine
+# Dùng NodeJS base image
 FROM node:20-alpine
 
-# Thiết lập thư mục làm việc bên trong container
+# Tạo thư mục làm việc
 WORKDIR /app
 
-# Sao chép package.json và package-lock.json vào TRƯỚC
+# Copy package.json trước
 COPY client/package*.json ./
 
-# Lệnh RUN npm install chỉ chạy nếu file nào thay đổi.
+# Cài dependency
 RUN npm install
 
-# Sao chép phần còn lại của client
+# Copy code (nếu build production thì giữ, dev thì có thể bỏ để bind mount)
 COPY client/ ./
 
-# Mặc định, React dev server sẽ chạy trên cổng 3000.
-# Thiết lập biến môi trường để nó chạy trên cổng này.
+# React dev server listen mọi IP
 ENV HOST=0.0.0.0
-
-# Thông báo rằng container sẽ lắng nghe trên cổng 3000
 EXPOSE 3000
 
-# Lệnh mặc định để khởi chạy container
+# Chạy server
 CMD ["npm", "start"]
